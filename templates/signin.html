@@ -1,0 +1,168 @@
+
+  <!DOCTYPE html>
+<html>
+<head>
+    
+        <!-- Basic -->
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <!-- Mobile Metas -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <!-- Site Metas -->
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+      
+        <title>MathToGraph</title>
+      
+       
+      
+        <!-- bootstrap core css -->
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename= 'css/bootstrap.css') }}"/>
+        <!-- progress barstle -->
+        
+        <!-- fonts style -->
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+        <!-- font wesome stylesheet -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        <!-- Custom styles for this template -->
+        <link href="{{ url_for('static', filename= 'css/style.css') }}" rel="stylesheet" />
+        <!-- responsive style -->
+        <link href="{{ url_for('static', filename= 'css/responsive.css') }}" rel="stylesheet" />
+       
+          
+        
+           
+                  
+	
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			font-family:'Poppins', sans-serif;
+		}
+		.container {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+			background-color: #f2f2f2;
+		}
+		.card {
+			width: 400px;
+			background-color: #fff;
+			box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+			border-radius: 5px;
+			padding: 30px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+      margin: auto;
+     
+      padding: 20px;
+      margin-top: 50px;;
+		}
+		
+		.card h2 {
+			margin-bottom: 30px;
+			text-align: center;
+		}
+		.form-group {
+			display: flex;
+			flex-direction: column;
+			margin-bottom: 20px;
+		}
+		.form-group label {
+			margin-bottom: 10px;
+			font-weight: bold;
+		}
+		.form-group input {
+			padding: 10px;
+			border: none;
+			border-radius: 5px;
+			background-color: #f2f2f2;
+			font-size: 16px;
+			color: #333;
+			box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+		}
+		.form-group input:focus {
+			outline: none;
+			box-shadow: inset 0 2px 5px rgba(0,0,0,0.2);
+			background-color: #fff;
+		}
+		.btn {
+			padding: 10px 20px;
+			border: none;
+			border-radius: 5px;
+			background-color: #fff;
+			color: #082465;
+            font-weight: bold;
+			font-size: 16px;
+			cursor: pointer;
+		}
+		.btn:hover {
+			background-color: #fec913;
+		}
+      
+        .logo {
+         height: 50px;
+         margin-left: 10px;
+        }
+
+        .bg-blue {
+         background-color: #082465 !important;
+        }
+        .navbar-nav .nav-item .nav-text {
+        color: #fff;
+        margin-left: 400px;
+        font-weight: bold;
+        }
+
+        .btn {
+        padding: 10px 20px;
+        margin-left: 10px;
+        }
+        .navbar-nav .nav-item .nav-link {
+        color: #fff;
+        font-weight: bold;
+        }
+        
+</style>
+    <nav class="navbar navbar-expand-lg  bg-blue">
+        <div class="container-fluid">
+            
+          <a class="navbar-brand" href="/">
+            <img src="{{ url_for('static', filename= 'images/logo.png') }}" alt="">
+            <span>
+              MathToGraph
+            </span>
+          </a>
+      
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="/">Home</a>
+              </li>
+            </ul>
+           </div>
+        </div>
+      </nav>
+      <div class="card">
+        
+        <h2>Sign in </h2>
+        <form method="POST" action="{{ url_for('login') }}">
+          <div class="form-group">
+            <label for="name">Mail:</label>
+            <input type="text" id="name" name="email" placeholder="Enter your name" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+          </div>
+                  
+          <button type="submit" class="btn_on-hover">Sign In</button>
+        </form>
+      </div>
+      
+                  

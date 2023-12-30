@@ -1,0 +1,31 @@
+{% extends 'baseTeacher.html' %}
+
+{% block content %}
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">math problem</th>
+        <th scope="col">Operations</th>
+        <th scope="col">Classe</th>
+        <th scope="col">delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for prob in probs %}
+      <tr>  
+        <th scope="row">{{prob.id - 14}}</th>
+        <td>{{prob.Problem}}</td>
+        <td>{{prob.operation}}</td>
+        <td>{{prob.classe}}</td>
+        <form action="{{ url_for('delete_prob', prob_id=prob.id) }}" method="POST">
+        <td><button type="submit" class="btn btn-outline-danger">delete</button></td>
+      </form>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  {% endblock %}
+

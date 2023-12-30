@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  <!-- about section -->
+  <section class="about_section layout_padding">
+    <div class="container">
+      <h2 class="main-heading ">
+        About School
+      </h2>
+      <p class="text-center">
+        Our math education platform is designed to help children improve their math skills in a fun and engaging way. 
+        The platform features a user-friendly interface that allows children to input math problems and receive solutions that are illustrated with images. Additionally, the platform uses machine learning algorithms to analyze the child's performance and recommend math problems that are appropriate for their level of proficiency. With our math education platform,
+        children can gain a deeper understanding of math concepts and develop the skills they need to succeed in school and beyond.
+      </p>
+      <div class="about_img-box ">
+        <img src="{{ url_for('static', filename= 'images/kids.jpg') }}" alt="" class="img-fluid w-100">
+      </div>
+      <div class="d-flex justify-content-center mt-5">
+        <a href="index.html" class="call_to-btn  ">
+
+          <span>
+            Read More
+          </span>
+          <img src="{{ url_for('static', filename= 'images/right-arrow.png') }}" alt="">
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- about section -->
+
+  {% endblock %}
+
+
+
+  

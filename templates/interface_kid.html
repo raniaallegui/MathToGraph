@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+        <!-- Basic -->
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <!-- Mobile Metas -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <!-- Site Metas -->
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+      
+        <title>MathToGraph</title>
+      
+       
+      
+        <!-- bootstrap core css -->
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename= 'css/bootstrap.css') }}"/>
+        <!-- progress barstle -->
+        
+        <!-- fonts style -->
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+        <!-- font wesome stylesheet -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        <!-- Custom styles for this template -->
+        <link href="{{ url_for('static', filename= 'css/style.css') }}" rel="stylesheet" />
+        <!-- responsive style -->
+        <link href="{{ url_for('static', filename= 'css/responsive.css') }}" rel="stylesheet" />
+       
+          
+        
+           
+                  
+	
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			font-family:'Poppins', sans-serif;
+			
+		}
+		.container {
+ 		 display: flex;
+ 		 justify-content: center;
+ 		 align-items: center;
+  			height: 150vh;
+  		background-color: #d2dae7;
+		  padding-top: 0px;
+ 		
+			}
+
+			.card {
+  width: 700px;
+  background-color: #FFF;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
+  padding-left: 50px; /* increase the value to push content farther away from the top */
+  align-items: center;
+}
+
+		.card img {
+			width: 100px;
+			margin-bottom: 30px;
+		}
+		.card h2 {
+			margin-bottom: 30px;
+			text-align: center;
+		}
+		.form-group {
+			display: flex;
+			flex-direction: column;
+			margin-bottom: 20px;
+		}
+		.form-group label {
+			margin-bottom: 10px;
+			font-weight: bold;
+		}
+		.form-group input {
+			padding: 10px;
+			border: none;
+			border-radius: 5px;
+			background-color: #f2f2f2;
+			font-size: 16px;
+			color: #333;
+			box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+		}
+		.form-group input:focus {
+			outline: none;
+			box-shadow: inset 0 2px 5px rgba(0,0,0,0.2);
+			background-color: #fff;
+		}
+		.btn {
+			padding: 10px 20px;
+			border: none;
+			border-radius: 5px;
+			background-color: #fff;
+			color: #082465;
+            font-weight: bold;
+			font-size: 16px;
+			cursor: pointer;
+		}
+		.btn:hover {
+			background-color: #fec913;
+		}
+        .card:first-child {
+            margin-right: 70px;
+        }
+        .navbar-brand {
+        margin-right: 20px;
+        }
+
+        .logo {
+         height: 50px;
+         margin-left: 10px;
+        }
+
+        .bg-blue {
+         background-color: #082465 !important;
+        }
+        .navbar-nav .nav-item .nav-text {
+        color: #fff;
+        margin-left: 400px;
+        font-weight: bold;
+        }
+
+        .btn {
+        padding: 10px 20px;
+        margin-left: 10px;
+        }
+        .navbar-nav .nav-item .nav-link {
+        color: #fff;
+        font-weight: bold;
+        }
+
+
+		.art-degrade h1 {
+         background: linear-gradient(to right, #fec913, #000);
+         text-align: center;
+}
+
+
+
+
+
+
+
+
+
+		* {
+  outline:none;
+	border:none;
+	margin:0px;
+	padding:0px;
+	font-family:Courier, monospace;
+}
+
+.paper {
+	color:#FFF;
+	font-size:20px;
+	margin-left:50px;
+}
+#margin {
+	margin-left:12px;
+	margin-bottom:20px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-o-user-select: none;
+	user-select: none; 
+}
+#text {
+	width:500px;
+	overflow:hidden;
+	background-color:#FFF;
+	color:#222;
+	font-family:Courier, monospace;
+	font-weight:normal;
+	font-size:24px;
+	resize:none;
+	line-height:40px;
+	padding-left:100px;
+	padding-right:100px;
+	padding-top:45px;
+	padding-bottom:34px;
+	background-image:url(https://static.tumblr.com/maopbtg/E9Bmgtoht/lines.png), url(https://static.tumblr.com/maopbtg/nBUmgtogx/paper.png);
+	background-repeat:repeat-y, repeat;
+	-webkit-border-radius:12px;
+	border-radius:12px;
+	-webkit-box-shadow: 0px 2px 14px #000;
+	box-shadow: 0px 2px 14px #000;
+	border-top:1px solid #FFF;
+	border-bottom:1px solid #FFF;
+}
+#title {
+	background-color:transparent;
+	border-bottom:3px solid #d2dae7;
+	color:#d2dae7;
+	font-size:20px;
+	font-family:Courier, monospace;
+	height:28px;
+	font-weight:bold;
+	width:220px;
+}
+
+.wrapper {
+	width:700px;
+	height:auto;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:24px;
+	margin-bottom:100px;
+}
+       
+.label {
+				color: #d2dae7;
+				margin-right: 5px;
+				font-weight: bold;
+			}  
+			
+			/* Keyframes */
+@keyframes myfirst {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Fish */
+.fish-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.card {
+  position: relative; /* add position:relative to the card container */
+  z-index: 1; /* set a higher z-index to the card container to make it appear on top of the fish */
+  /* rest of the card styles */
+}
+
+
+
+
+
+
+#fish2 {
+	top: 260px;
+	animation-delay: 0s;
+	-webkit-animation-delay: 0s;
+}
+
+
+
+
+
+
+
+
+
+
+.fish {
+  background-image: url('http://www.geertjanhendriks.nl/codepen/form/fish.png');
+  width: 235px; /* set a large width */
+  height: 104px;
+  position: absolute;
+  top: calc(5% - 52px); /* center vertically */
+  left: -10%; /* align the fish to the left edge of the screen */
+    animation: myfirst 5s linear infinite ;
+  transform: translateX(-110%);
+  z-index: -1; /* set a lower z-index to the fish to make it appear behind the card */
+}
+
+
+#fish {
+  top: 330px;
+	animation-delay: 0s;
+	-webkit-animation-delay: 0s;
+ 
+}
+
+
+
+    .modal {
+  display: none; 
+  position: fixed; 
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgba(0,0,0,0.4); 
+}
+
+.modal-content {
+  background-color: gold;
+  margin: 0 auto; 
+  padding: 0;
+  border: none;
+  width: 60%; /* Réduction de la largeur du modal-content */
+  height: 40%; /* Réduction de la hauteur du modal-content */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Centrage du modal-content */
+}
+
+.close {
+  color: #aaa;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+}
+
+.gif {
+  width: 90%; /* Réduction de la taille de l'image */
+  height: 90%;
+  object-fit: contain; /* Ajustement de l'image à la taille spécifiée */
+  position: absolute;
+  top: 50%;
+  left: 20%;
+  transform: translate(-50%, -50%); /* Centrage de l'image */
+}
+
+
+.title1 {
+  font-family: 'Sawarabi Gothic', sans-serif;
+  font-size: 40px;
+  color: #4b7cb6;
+  font-style: oblique;
+  filter: drop-shadow(4px 4px 0 #8BeCf6);
+  position:absolute;
+  left:45%;
+  top:40%;
+}
+.modal3 {
+  display: none; 
+  position: fixed; 
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgba(0,0,0,0.4); 
+}
+
+.modal-content3 {
+  background-color:lightblue ;
+  margin: 0 auto; 
+  padding: 0;
+  border: none;
+  width: 60%; /* Réduction de la largeur du modal-content */
+  height: 40%; /* Réduction de la hauteur du modal-content */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Centrage du modal-content */
+}
+
+.close3 {
+  color: #aaa;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close3:hover,
+.close3:focus {
+  color: black;
+  text-decoration: none;
+}
+
+.gif3 {
+  width: 40%; /* Réduction de la taille de l'image */
+  height: 80%;
+  object-fit: contain; /* Ajustement de l'image à la taille spécifiée */
+  position: absolute;
+  top: 50%;
+  left: 20%;
+  transform: translate(-50%, -50%); /* Centrage de l'image */
+}
+
+
+
+.title13 {
+  font-family: 'Sawarabi Gothic', sans-serif;
+  font-size: 35px;
+  color:cornflowerblue;
+  font-style: oblique;
+  filter: drop-shadow(4px 4px 0 #c0c0c0);
+  position:absolute;
+  left:35%;
+  top:40%;
+}
+
+button {
+        display: inline-block;
+        background-color:#fec913;
+        border-radius: 10px;
+        border: 4px double #cccccc;
+        color: #eeeeee;
+        text-align: center;
+        font-size: 28px;
+        padding: 20px;
+        width: 300px;
+        transition: all 0.5s;
+        cursor: pointer;
+        margin: 5px;
+      }
+      button span {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.5s;
+      }
+      button span:after {
+        content: "\00bb";
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        right: -20px;
+        transition: 0.5s;
+      }
+      button:hover {
+        background-color: #f7c2f9;
+      }
+      button:hover span {
+        padding-right: 25px;
+      }
+      button:hover span:after {
+        opacity: 1;
+        right: 0;
+      }
+   
+
+	  .modal2 {
+  display: none; 
+  position: fixed; 
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgba(0,0,0,0.4); 
+}
+
+.modal-content2 {
+  background-color:beige ;
+  margin: 0 auto; 
+  padding: 0;
+  border: none;
+  width: 60%; /* Réduction de la largeur du modal-content */
+  height: 40%; /* Réduction de la hauteur du modal-content */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Centrage du modal-content */
+}
+
+.close2 {
+  color: #aaa;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close2:hover,
+.close2:focus {
+  color: black;
+  text-decoration: none;
+}
+
+.gif2 {
+  width: 40%; /* Réduction de la taille de l'image */
+  height: 80%;
+  object-fit: contain; /* Ajustement de l'image à la taille spécifiée */
+  position: absolute;
+  top: 50%;
+  left: 20%;
+  transform: translate(-50%, -50%); /* Centrage de l'image */
+}
+
+
+
+.title12 {
+  font-family: 'Sawarabi Gothic', sans-serif;
+  font-size: 35px;
+  color:deeppink;
+  font-style: oblique;
+  filter: drop-shadow(4px 4px 0 #8BeCf6);
+  position:absolute;
+  left:42%;
+  top:40%;
+}
+
+
+
+            
+	</style>
+    <nav class="navbar navbar-expand-lg  bg-blue">
+        <div class="container-fluid">
+            
+          <a class="navbar-brand" href="/">
+            <img src="{{ url_for('static', filename= 'images/logo.png') }}" alt="">
+            <span>
+              MathToGraph
+            </span>
+          </a>
+      
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="/">Home</a>
+              </li>
+			  <li>          
+            </ul>
+			<h1 style="text-align: center; font-weight: bold; padding-left:200px;">Student Interface</h1>
+
+      <li >
+        <a  href="{{ url_for('signin') }}" style="padding-left: 150px; font-weight: bold;">Log Out</a>
+      </li>
+            
+          </div>
+        </div>
+      </nav>
+      
+	  
+		{% if open_modalkid==1 %}
+		<script>
+		  document.addEventListener("DOMContentLoaded", function() {
+			openModal();
+		  });
+		  </script>
+		{% endif %}
+		
+	 
+
+{% if open_modalkid==3 %}
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+	openModal3();
+  });
+  </script>
+{% endif %}
+
+{% if open_modalkid==2 %}
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+	openModal2();
+  });
+  </script>
+{% endif %}
+<script>
+		function openModal() {
+		  var modal = document.getElementById("myModal");
+		  modal.style.display = "block";
+		}
+	
+		function closeModal() {
+		  var modal = document.getElementById("myModal");
+		  modal.style.display = "none";
+		}
+function openModal3() {
+  var modal3 = document.getElementById("myModal3");
+  modal3.style.display = "block";
+}
+
+function closeModal3() {
+  var modal3 = document.getElementById("myModal3");
+  modal3.style.display = "none";
+}
+function openModal2() {
+  var modal2 = document.getElementById("myModal2");
+  modal2.style.display = "block";
+}
+
+function closeModal2() {
+  var modal2 = document.getElementById("myModal2");
+  modal2.style.display = "none";
+}
+</script>
+
+
+
+	  
+	  
+</head>
+<body>
+	
+<form method="POST" action="{{ url_for('get_Response') }}">
+	<div class="container">
+		
+		<div class="card">
+			
+			<div class="wrapper">
+					<img src="{{ url_for('static', filename= 'images/image222.jpg') }}" alt="">
+					<span class="label">problem</span><input id="title"  type="text" name="title">
+					<textarea placeholder="Probleme proposé par le prof" id="text" name="Problem" rows="4" style="overflow: hidden; word-wrap: break-word; resize: none; height: 160px;  width: 600px;">{{problem}}</textarea>  
+				
+			</div>
+			<hr color="yellow" size="10" width="80%">
+      <br>
+<div class="fish" id="fish"></div>
+            <div class="wrapper">
+					<img src="{{ url_for('static', filename= 'images/image111.jpg') }}" alt="">
+					<span class="label">Réponse:</span>
+					<textarea placeholder="enter you response" id="text" name="Response" rows="4" style="overflow: hidden; word-wrap: break-word; resize: none; height: 160px;  width: 600px;"></textarea>  
+				
+			</div>
+			<div>
+				<button  type="submit" class="btn_on-hover" name="ijeba" >CORRECTION>></button>
+
+
+				 <br>
+				<button type="submit" class="btn_on-hover" name="nass">Generer</button>
+        <audio id="audio-player" controls>
+          <source src="{{smakdouwn}}" type="audio/mpeg">
+      </audio>
+		</div>
+			
+	</div>
+	
+		    
+</form>
+
+
+
+<div id="myModal" class="modal">
+	<div class="modal-content">
+  <span class="close" onclick="closeModal()">&times;</span>
+  <img src="{{ url_for('static', filename= 'images/clp.gif') }}" alt="Animation GIF en plein écran" class="gif">
+	  <div class="title1" > ✨Great Job!✨</div>
+	</div>
+</div>
+
+
+<div id="myModal3" class="modal3">
+<div class="modal-content3">
+  <span class="close3" onclick="closeModal3()">&times;</span>
+  <img src="{{ url_for('static', filename= 'images/sad3.gif') }}" alt="Animation GIF en plein écran" class="gif3">
+  
+  
+  <div class="title13" >Nice, but push further! (ง'̀-'́)ง</div>
+</div>
+</div>
+
+<div id="myModal2" class="modal2">
+    <div class="modal-content2">
+      <span class="close2" onclick="closeModal2()">&times;</span>
+      <img src="{{ url_for('static', filename= 'images/sad1.gif') }}" alt="Animation GIF en plein écran" class="gif2">
+      
+      
+      <div class="title12" >ಥ_ಥ Try again, you can do it! </div>
+    </div>
+  </div>
+  <script>
+    var audioPlayer = document.getElementById('audio-player');
+
+    function playAudio() {
+        audioPlayer.play();
+    }
+
+    function pauseAudio() {
+        audioPlayer.pause();
+    }
+
+    function stopAudio() {
+        audioPlayer.pause();
+        audioPlayer.currentTime = 0;
+    }
+</script>
+	    
+</body>
+

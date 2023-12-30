@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>Teacherdash</title>
+
+ 
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+      
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+      <link rel="stylesheet" href="{{ url_for('static', filename= 'css/stylesidebar.css') }}">
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename= 'css/bootstrap.css') }}"/>
+  <!-- progress barstle -->
+  
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+  <!-- font wesome stylesheet -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <!-- Custom styles for this template -->
+  <link href="{{ url_for('static', filename= 'css/style.css') }}" rel="stylesheet" />
+   <!-- responsive style -->
+   <link href="{{ url_for('static', filename= 'css/responsive.css') }}" rel="stylesheet" />
+   <!-- table bootstrap -->
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+   <style>
+    
+   
+.container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        background-color: #f2f2f2;
+      }
+      .card{
+        display: flex;
+        margin-top: 30px;
+        align-items: flex-start;
+        width: 100%;
+        height: 100%;
+}
+
+</style>
+</head>
+<body>
+   
+  <div class="wrapper d-flex align-items-stretch">
+    <nav id="sidebar">
+      <div class="p-4 pt-5">
+        <img src="{{teacher_path}}" alt="" class="img logo rounded-circle mb-5">
+
+        <ul class="list-unstyled components mb-5">
+          <li>
+            <a href="/teacherdash">Dashbord</a>
+          </li>
+          <li>
+            <a href="#classesSubMenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Classes</a>
+            <ul class="collapse list-unstyled" id="classesSubMenu">
+              {% for classe in classes %}
+              <li>
+                <a href="{{ url_for('show_class', class_id=classe.id) }}">{{classe.Name}}</a>
+              </li>
+              {% endfor %}
+            </ul>
+          </li>
+          <li>
+            <a href="#mathProblemsSubMenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Math Problems</a>
+            <ul class="collapse list-unstyled" id="mathProblemsSubMenu">
+              <li>
+                <a href="{{ url_for('portfolio') }}">Portfolio</a>
+              </li>
+              <li>
+                <a href="#"data-toggle="modal" data-target="#exampleModal">Add math problem</a>
+              </li>
+              <li>
+                <a href="#"data-toggle="modal" data-target="#exampleModal2">Find math problem</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#accountSubMenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Account</a>
+            <ul class="collapse list-unstyled" id="accountSubMenu">
+              <li>
+                <a href="#">Profile</a>
+              </li>
+              <li>
+                <a href="#">Settings</a>
+              </li>
+              <li>
+                <a href="{{ url_for('signin') }}">Logout</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    
+    
+      
+      
+
+<!-- Page Content  -->
+
+<div id="content" class="p-4 p-md-5">
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+
+    <button type="button" id="sidebarCollapse" class="btn btn-primary">
+      <i class="fa fa-bars"></i>
+      <span class="sr-only">Toggle Menu</span>
+    </button>
+    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fa fa-bars"></i>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="nav navbar-nav ml-auto">
+        <li class="nav-item active">
+            <a class="nav-link" href="#">Dashboard</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/portfolio">Portfolio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" data-toggle="modal" data-target="#exampleModal3" >add new Student</a>
+      </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#" data-toggle="modal" data-target="#exampleModal">Add Math problem</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" data-toggle="modal" data-target="#exampleModal2">Find Math problem</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" data-toggle="modal" data-target="#exampleModal4">Find similar problem</a>
+    </li>
+      <!-- Modal window find similar math problem  -->
+      <div class="modal fade" id="exampleModal4" tabindex="-1" role="dialog" aria-labelledby="exampleModal4Label" aria-hidden="true">
+        <form method="POST" action="{{ url_for('find_similar_prob') }}">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModal2Label">Find a similar math problem</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+               
+                <div class="form-group">
+                  <label for="operation-name" class="col-form-label">type your math problem :</label>
+                  <input type="text" class="form-control" id="operation-name" name="probleminput" value="{{prob}}">
+                </div>
+                <div class="form-group">
+                  <label for="operation-name" class="col-form-label">similar math problem :</label>
+                  <input type="text" class="form-control" id="operation-name" value="{{problemna}}">
+                </div>
+                <div class="form-group">
+                  <label for="operation-name" class="col-form-label">Answer :</label>
+                  <input type="text" class="form-control" id="operation-name" value="{{reponsetna}}">
+                </div>
+              
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+              <button type="submit" class="btn btn-primary" name="cheda">find</button>
+            </div>
+          </div>
+        </div>
+      </form>
+      </div>
+         <!-- Modal window add math problem  -->
+         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <form method="POST" action="{{ url_for('add_Prob') }}">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">add a New math problem</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <div class="form-group">
+                      <label for="classes-name" class="col-form-label">Assigned To classes :</label>
+                    <select id="gender" name="classetou" class="form-control">
+                      {% for classe in classes %}
+                      <option value="{{classe.Name}}">{{classe.Name}}</option>
+                      {% endfor %}
+                      </select>
+                    </div>
+
+                    
+                  
+                    
+                    <div class="form-group">
+                      <label for="message-text" class="col-form-label">write the math problem:</label>
+                      <textarea class="form-control" id="message-text" name="problem"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="problem-answer" class="col-form-label">Problem Answer :</label>
+                        <textarea type="text" class="form-control" id="problem-answer" name="reponse"></textarea>
+                      </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="submit" class="btn btn-secondary" data-dismiss="modal" name="Cancel">Cancel</button>
+                  <button type="submit" class="btn btn-primary" name="Add">Add</button>
+                </div>
+              </div>
+            </div>
+          </form>
+          </div>
+          <!-- Modal window add new student  -->
+          <div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <form method="POST" action="{{ url_for('add_kid') }}" enctype="multipart/form-data">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">add New Student</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  
+    
+                    <div class="form-group">
+                      <label for="firstname" class="col-form-label" >First Name:</label>
+                      <input type="text" id="name" name="first_name" class="form-control" placeholder="Enter your First name" required>
+                    </div>
+                    <div class="form-group" >
+                      <label for="lastname" class="col-form-label">Last Name:</label>
+                      <input type="text" id="name" name="last_name" class="form-control" placeholder="Enter your Last name" required>
+                    </div>
+                    <div class="form-group" class="col-form-label">
+                      <label for="gender" class="col-form-label">Gender:</label>
+                      <select id="gender" name="gender" class="form-control">
+                      <option value="male">Male</option>
+                      <option value="female">Female</option>
+                      <option value="other">Other</option>
+                      </select>
+                    </div>
+            
+            
+                    
+                    <div class="form-group" class="col-form-label">
+                      <label for="classes-name" class="col-form-label">Classe :</label>
+                    <select id="gender" name="classi" class="form-control">
+                      {% for classe in classes %}
+                      <option value="{{classe.Name}}">{{classe.Name}}</option>
+                      {% endfor %}
+                      </select>
+                    </div>
+                    <div class="form-group" class="col-form-label">
+                      <label for="class">Picture:</label>
+                      <input type="file" name="image" id="class" class="form-control" required >
+                    </div>
+                    
+                  
+                </div>
+                <div class="modal-footer">
+                  <button type="submit" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                  <button type="submit" class="btn btn-secondary", value="add kid">Add kid</button>
+                </div>
+              </div>
+            </div>
+          </form>
+          </div>
+          <!-- Modal window find math problem  -->
+         <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModal2Label" aria-hidden="true">
+          <form method="POST" action="{{ url_for('find_Prob') }}">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModal2Label">Find a math problem</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+               <div class="form-group">
+                    <label for="operation-name" class="col-form-label">Used math Operations :</label>
+                    <div class="form-check form-switch">
+                      <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="multiplication" {% if c3 %}checked{% endif %} >
+                      <label class="form-check-label" for="flexSwitchCheckDefault">Multiplication</label>
+                    </div>
+                    <div class="form-check form-switch">
+                      <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="addition" {% if c1 %}checked{% endif %}>
+                      <label class="form-check-label" for="flexSwitchCheckDefault">Addition</label>
+                    </div>
+                    <div class="form-check form-switch">
+                      <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="division" {% if c4 %}checked{% endif %}>
+                      <label class="form-check-label" for="flexSwitchCheckDefault">Division</label>
+                    </div>
+                    <div class="form-check form-switch">
+                      <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="substraction" {% if c2 %}checked{% endif %}>
+                      <label class="form-check-label" for="flexSwitchCheckDefault">Substraction</label>
+                    </div>
+                    
+                    <div class="form-group">
+                      <label for="classes-name" class="col-form-label">Math problem</label>
+                      <input type="text" class="form-control" id="classes-name" name="problemmaktoub" value="{{k}}">
+                    </div>
+                    <div class="form-group">
+                      <label for="classes-name" class="col-form-label">response</label>
+                      <input type="text" class="form-control" id="classes-name1" name="reponsemaktoub" value="{{b}}">
+                    </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Add to portfolio
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    {% for classe in classes %}
+                    <a class="dropdown-item" href="{{ url_for('add_to_portfolio', classe_id=classe.id) }}">{{classe.Name}}</a>
+                    {% endfor %}
+                  </div>
+                </div>
+                
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="submit" id="buttonfind" class="btn btn-primary" name="Find">Find</button>
+              </div>
+            </div>
+          </div>
+        </form>
+        </div>
+      
+        <li class="nav-item">
+            <a class="nav-link" href="#">Account</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container">
+<div class="card">
+
+{% block content %}{% endblock %}
+</div>
+</div>
+</div>
+</div>
+
+
+
+<script src="{{ url_for('static', filename= 'js/jquerysidebar.min.js') }}"></script>
+<script src="{{ url_for('static', filename= 'js/jquery-3.4.1.min.js') }}"></script>
+<script src="{{ url_for('static', filename= 'js/poppersidebar.js') }}"></script>
+<script src="{{ url_for('static', filename= 'js/bootstrapsidebar.min.js') }}"></script>
+<script src="{{ url_for('static', filename= 'js/mainsidebar.js') }}"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+{% if openmodal %}
+<script>
+  $(document).ready(function(){
+      $('#exampleModal2').modal('show');
+  });
+</script>
+{% endif %}
+
+{% if openmodalsimilar %}
+<script>
+  $(document).ready(function(){
+      $('#exampleModal4').modal('show');
+  });
+</script>
+{% endif %}
+
+
+</body>

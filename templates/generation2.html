@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      
+        .image {
+         position: absolute;
+         left: 0;
+         top: 0;
+         transition: transform 0.00001s ease-in-out;
+         
+       }
+       .text-zone {
+         position: absolute;
+         border: 1px solid black;
+         padding: 5px;
+         background-color: white;
+         transition: transform 0.00001s ease-in-out;
+         cursor: move;
+       }
+       
+      body {
+        background:antiquewhite;
+      }
+      .wrapper {
+        margin: 80px auto;
+        text-align: center;
+        width: 100%;
+        position: relative;
+      }
+      .button{
+        padding: 8px 20px;
+        margin: 10px 4px;
+        color:#b414ba;
+        background-color:antiquewhite;
+        font-family: sans-serif;
+        text-transform: uppercase;
+        text-align: center;
+        position: relative;
+        text-decoration: none;
+        display: inline-block;
+        border: 1px solid;
+      }
+      .button::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        -webkit-transform: scaleY(0.1);
+        transform: scaleY(0.1);
+        transition: all 0.4s;
+      }
+      .button:hover {
+        color: #b414ba;
+      }
+      .button:hover::before {
+        opacity: 1;
+        background-color: #f7c2f9;
+        -webkit-transform: scaleY(1);
+        transform: scaleY(1);
+        transition: -webkit-transform 0.6s cubic-bezier(0.08, 0.35, 0.13, 1.02), opacity 0.4s;
+        transition: transform 0.6s cubic-bezier(0.08, 0.35, 0.13, 1.02), opacity;
+      }
+
+
+
+
+
+
+
+      main {
+  
+  border: 1px solid antiquewhite ;
+  display: flex;
+  flex-grow: 1;
+}
+
+.left-block {
+  width: 160px;
+  border-right: 1px solid antiquewhite;
+  margin-top: 5px;
+}
+
+.colors {
+  background-color:antiquewhite;
+  text-align: center;
+  padding-bottom: 5px;
+  padding-top: 10px;
+}
+
+.colors button {
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 0;
+  outline: none;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  margin-bottom: 5px
+}
+
+.colors button:nth-of-type(1) {
+    
+  background-color: red;
+}
+.colors button:nth-of-type(2) {
+  background-color: black;
+}
+
+
+
+
+.buttons {
+  height: 80px;
+  padding-top: 10px;
+}
+
+.buttons button {
+  display: block;
+  width: 100%;
+  border: 0;
+  border-radius: 0;
+  background-color: #f2abf5;
+  margin-bottom: 5px;
+  padding: 5px;
+  height: 30px;
+  outline: none;
+  position: relative;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.right-block {
+  width: 100%;
+  height: 100%;
+}
+
+#paint-canvas {
+  cursor:crosshair;
+}
+
+.form-control {
+  display: block;
+  width: 15%;
+  height: calc(0.4em + 0.75rem + 2px);
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+     
+         </style>
+
+    <title>Upload et Déplacement d'image</title>
+  </head>
+  <body>
+ 
+    <table>
+      <tbody>
+        <form method="POST" action="{{ url_for('add_image') }}">
+        <tr height: 5px;>
+         
+            <main>
+              <div class="left-block" style="position:absolute; top:10% ;left:20%;transform: translate(-50%, -50%);">
+                <div class="colors">
+                 
+                  <button type="button" value="red"></button>
+                  <button type="button" value="black"></button>
+                </div>
+          
+                <div class="buttons">
+                  <button id="clear" type="button">Clear</button>
+                  
+                </div>
+              </div>
+              <div class="right-block" width="100%" height="100%">
+                <canvas id="paint-canvas" width="1600px" height="800px" ></canvas>
+              </div>
+            </main> 
+              {% if images %}
+              {% for image_url in images %}
+              <img
+                class="image"
+                src="{{ image_url }}"
+                alt="Uploaded Image"
+                width="224"
+                height="224"
+              />
+              {% endfor %}
+              {% endif %}
+          
+              <button id="generate-button" class="button" style ="position: absolute; top: 5%; left: 50%; transform: translate(-50%, -50%);" name="zidsawer">Generate </button>
+              <input type="text"  name="add-image" class="form-control" id="input-field" placeholder="New Image" style ="position: absolute; top: 6.25%; left: 63%; transform: translate(-50%, -50%); background-color:#f0e2f0;" >
+            </td>
+        </tr>
+        <tr>
+          <td rowspan="2">
+            <img class="u-image u-image-contain u-image-default u-image-2" src="{{ url_for('static', filename= 'images/clipart7161431.png') }}" alt="" data-image-width="206" data-image-height="700" style="position: absolute; left: 0; top: 0; z-index: -1;">
+          </td>
+          <td width ="80%">
+            
+          <td rowspan="2">
+            <img class="u-image u-image-contain u-image-default u-image-1" src="{{ url_for('static', filename= 'images/IMGENESDENIOSYNIASENLAESCUELA.png') }} " alt="" data-image-width="191" data-image-height="700" style="position: absolute; right: 0; top: 0; z-index: -1;">
+       
+          </td>
+        </tr>
+      </form>
+      <button id="add-text-zone" class="button" style ="position: absolute; top: 5%; left: 35%; transform: translate(-50%, -50%);">Add Text Zone</button>
+
+      </tbody>
+    </table>
+
+
+
+
+    <script>
+      window.onload = function () {
+  
+    // Definitions
+    var canvas = document.getElementById("paint-canvas");
+    var context = canvas.getContext("2d");
+    var boundings = canvas.getBoundingClientRect();
+  
+    // Specifications
+    var mouseX = 0;
+    var mouseY = 0;
+    context.strokeStyle = 'black'; // initial brush color
+    context.lineWidth = 3; // initial brush width
+    var isDrawing = false;
+  
+  
+    // Handle Colors
+    var colors = document.getElementsByClassName('colors')[0];
+  
+    colors.addEventListener('click', function(event) {
+      context.strokeStyle = event.target.value || 'black';
+      context.lineWidth = event.target.value || 3;
+    });
+  
+    // Handle Brushes
+   
+  
+    // Mouse Down Event
+    canvas.addEventListener('mousedown', function(event) {
+      setMouseCoordinates(event);
+      isDrawing = true;
+  
+      // Start Drawing
+      context.beginPath();
+      context.moveTo(mouseX, mouseY);
+    });
+  
+    // Mouse Move Event
+    canvas.addEventListener('mousemove', function(event) {
+      setMouseCoordinates(event);
+  
+      if(isDrawing){
+        context.lineTo(mouseX, mouseY);
+        context.stroke();
+      }
+    });
+  
+    // Mouse Up Event
+    canvas.addEventListener('mouseup', function(event) {
+      setMouseCoordinates(event);
+      isDrawing = false;
+    });
+  
+    // Handle Mouse Coordinates
+    function setMouseCoordinates(event) {
+      mouseX = event.clientX - boundings.left;
+      mouseY = event.clientY - boundings.top;
+    }
+  
+    // Handle Clear Button
+    var clearButton = document.getElementById('clear');
+  
+    clearButton.addEventListener('click', function() {
+      context.clearRect(0, 0, canvas.width, canvas.height);
+    });
+  
+    
+  };
+  
+    </script>
+    <script type="text/javascript" src="{{ url_for('static', filename= 'js/scripts.js') }}"></script>	
+    
+  </body>
+</html>

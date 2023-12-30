@@ -1,0 +1,96 @@
+{% extends 'baseTeacher.html' %}
+
+{% block content %}
+<head>	
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename= 'css2/style.css') }}"/>
+	<style>
+		.excellent {
+		  color: green;
+		}
+	  
+		.good {
+		  color: yellow;
+		}
+	  
+		.bad {
+		  color: red;
+		}
+	  </style>  
+	  
+</head>
+<body>
+	<section class="ftco-section">
+		<div class="container">
+			
+			<div class="row">
+				<div class="col-md-12">
+					<div class="table-wrap">
+						<table class="table table-responsive-xl">
+						  <thead>
+						    <tr>
+						    	<th>&nbsp;</th>
+						    	<th>Email</th>
+						      <th>Username</th>
+						      <th>classe</th>
+							  <th>Performance</th>
+						      <th>&nbsp;</th>
+						    </tr>
+						  </thead>
+						  <tbody>
+							{% for kid in kids %}
+						    <tr class="alert" role="alert">
+						    	<td>
+						    		<label class="checkbox-wrap checkbox-primary">
+										  <input type="checkbox" checked>
+										  <span class="checkmark"></span>
+										</label>
+						    	</td>
+			
+						      <td class="d-flex align-items-center">
+						      	<div class="img" style="background-image: url({{kid.image_path}});"></div>
+						      	<div class="pl-3 email">
+						      		<span>{{kid.email}}</span>
+						      		<span>{{kid.gender}}</span>
+						      	</div>
+						      </td>
+						      <td>{{kid.FirstName}}{{kid.LastName}}</td>
+							  <td>{{kid.classe}}</td>
+							  <td class="status">
+							  {% if kid.score>0.75 %}
+						      <span class="active">excellent</span>
+							  {% elif kid.score > 0.4 %}
+							  <span class="yellow">good</span>
+							  {% else %}
+							  <span class="waiting" >bad</span>
+							  {% endif %}
+							  </td>
+						      <td>
+								<form action="{{ url_for('delete_kid', kid_id=kid.id) }}" method="POST">
+						      	<button type="submit"  class="close"  aria-label="Close" >
+				            	<span aria-hidden="true"><i class="fa fa-close"></i></span>
+				          	</button>
+							</form>
+				        	</td>
+						    </tr>
+							{% endfor %}
+						    
+						  </tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+  <script type="text/javascript" src="{{ url_for('static', filename= 'js2/jquery.min.js') }}"></script>	
+  <script type="text/javascript" src="{{ url_for('static', filename= 'js2/popper.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename= 'js2/bootstrap.min.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename= 'js2/main.js') }}"></script>       
+
+	
+
+
+	
+</body>
+
+{% endblock %}

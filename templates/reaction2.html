@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .modal2 {
+  display: none; 
+  position: fixed; 
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgba(0,0,0,0.4); 
+}
+
+.modal-content2 {
+  background-color:beige ;
+  margin: 0 auto; 
+  padding: 0;
+  border: none;
+  width: 60%; /* Réduction de la largeur du modal-content */
+  height: 40%; /* Réduction de la hauteur du modal-content */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Centrage du modal-content */
+}
+
+.close2 {
+  color: #aaa;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close2:hover,
+.close2:focus {
+  color: black;
+  text-decoration: none;
+}
+
+.gif2 {
+  width: 40%; /* Réduction de la taille de l'image */
+  height: 80%;
+  object-fit: contain; /* Ajustement de l'image à la taille spécifiée */
+  position: absolute;
+  top: 50%;
+  left: 20%;
+  transform: translate(-50%, -50%); /* Centrage de l'image */
+}
+
+
+
+.title12 {
+  font-family: 'Sawarabi Gothic', sans-serif;
+  font-size: 35px;
+  color:deeppink;
+  font-style: oblique;
+  filter: drop-shadow(4px 4px 0 #8BeCf6);
+  position:absolute;
+  left:42%;
+  top:40%;
+}
+  </style>
+  <title>Exemple</title>
+  
+  <script>
+    function openModal2() {
+      var modal = document.getElementById("myModal2");
+      modal.style.display = "block";
+    }
+
+    function closeModal2() {
+      var modal = document.getElementById("myModal2");
+      modal.style.display = "none";
+    }
+  </script>
+</head>
+<body>
+  <button onclick="openModal2()">Ouvrir la fenêtre modale</button>
+
+  <div id="myModal2" class="modal2">
+    <div class="modal-content2">
+      <span class="close2" onclick="closeModal2()">&times;</span>
+      <img src="{{ url_for('static', filename= 'images/sad1.gif') }}" alt="Animation GIF en plein écran" class="gif2">
+      
+      
+      <div class="title12" >ಥ_ಥ Try again, you can do it! </div>
+    </div>
+  </div>
+</body>
+</html>
